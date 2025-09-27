@@ -22,7 +22,7 @@ jobs:
           else
             COMMIT_SHA="${{ github.event.after }}"
           fi
-          COMMIT_MSG=$(git log --format=%s -n 1 "COMMIT_SHA")
+          COMMIT_MSG=$(git log --format=%s -n 1 "$COMMIT_SHA")
           
           if [[ "$COMMIT_MSG" == *"FAIL"* ]]; then
               echo "Commit message contains 'FAIL', failing the job."
