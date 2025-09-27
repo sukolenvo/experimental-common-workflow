@@ -1,10 +1,7 @@
 name: Experimental shared workflow
 
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-
 jobs:
+  runs-on: ubuntu-latest
   experimental-job:
     steps:
       - name: checkout
