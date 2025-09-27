@@ -12,8 +12,7 @@ jobs:
           fetch-depth: '0'
 
       - name: validate
-        env:
-          GITHUB_ACTION_PATH: ${{ github.action_path }}
+        uses: sukolenvo/experimental-common-workflow/commit
         run: |
           pwd
           ls
