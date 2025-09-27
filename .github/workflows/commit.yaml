@@ -25,5 +25,5 @@ jobs:
           fi
           COMMIT_MSG=$(git log --format=%s -n 1 "$COMMIT_SHA")
           
-          bash commit.sh "$COMMIT_MSG"
+          bash commit/commit.sh "$COMMIT_MSG"
           
