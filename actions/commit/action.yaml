@@ -34,4 +34,4 @@ runs:
           COMMIT_SHA="${{ github.event.after }}"
         fi
         COMMIT_MSG=$(git log --format=%s -n 1 "$COMMIT_SHA")
-        bash commit.sh "$COMMIT_MSG"
+        commit.sh "$COMMIT_MSG"
