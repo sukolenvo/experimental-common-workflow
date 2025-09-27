@@ -15,7 +15,8 @@ jobs:
         run: |
           pwd
           ls
-          echo "${{github.event}}"
+          echo "${{github.action_path}}"
+          ls "${{github.action_path}}"
           
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             COMMIT_SHA="${{ github.event.pull_request.head.sha }}"
@@ -24,9 +25,5 @@ jobs:
           fi
           COMMIT_MSG=$(git log --format=%s -n 1 "$COMMIT_SHA")
           
-          if [[ "$COMMIT_MSG" == *"FAIL"* ]]; then
-              echo "Commit message contains 'FAIL', failing the job."
-              exit 1
-          else
-              echo "Commit message is valid."
-          fi
+          bash commit.sh "$COMMIT_MSG"
+          
