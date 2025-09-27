@@ -12,7 +12,7 @@ jobs:
           fetch-depth: '0'
 
       - name: validate
-        uses: sukolenvo/experimental-common-workflow/commit
+        uses: sukolenvo/experimental-common-workflow/commit@master
 #        run: |
 #          pwd
 #          ls
