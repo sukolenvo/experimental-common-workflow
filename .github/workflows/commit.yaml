@@ -12,11 +12,13 @@ jobs:
           fetch-depth: '0'
 
       - name: validate
+        env:
+          GITHUB_ACTION_PATH: ${{ github.action_path }}
         run: |
           pwd
           ls
-          echo "${{github.action_path}}"
-          ls "${{github.action_path}}"
+          echo "${{GITHUB_ACTION_PATH}}"
+          ls "${{GITHUB_ACTION_PATH}}"
           
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             COMMIT_SHA="${{ github.event.pull_request.head.sha }}"
