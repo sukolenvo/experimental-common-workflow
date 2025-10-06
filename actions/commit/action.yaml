@@ -3,17 +3,17 @@ description: 'Greet someone'
 inputs:
   who-to-greet:  # id of input
     description: 'msg'
-    required: true
-    default: 'World'
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+    required: false
 runs:
   using: "composite"
   steps:
     - name: Set Greeting
-      run: echo "Hello $INPUT_WHO_TO_GREET."
+      run: |
+        name=$INPUT_WHO_TO_GREET
+        if [[ -z $name ]]; then
+          name=$(id)
+        fi
+        echo "Hello $name"
       shell: bash
       env:
         INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
